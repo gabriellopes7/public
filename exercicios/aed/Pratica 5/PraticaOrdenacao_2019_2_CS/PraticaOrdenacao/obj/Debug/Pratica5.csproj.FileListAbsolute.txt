@@ -1,0 +1,10 @@
+H:\AED\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\obj\Debug\Pratica5.csprojAssemblyReference.cache
+H:\AED\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\obj\Debug\Pratica5.FormOrdenacao.resources
+H:\AED\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\obj\Debug\PraticaOrdenacao.Properties.Resources.resources
+H:\AED\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\obj\Debug\Pratica5.csproj.GenerateResource.cache
+H:\AED\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\obj\Debug\Pratica5.csproj.CoreCompileInputs.cache
+H:\AED\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\bin\Debug\PraticaOrdenacao.exe.config
+H:\AED\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\bin\Debug\PraticaOrdenacao.exe
+H:\AED\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\bin\Debug\PraticaOrdenacao.pdb
+H:\AED\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\obj\Debug\PraticaOrdenacao.exe
+H:\AED\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\obj\Debug\PraticaOrdenacao.pdb

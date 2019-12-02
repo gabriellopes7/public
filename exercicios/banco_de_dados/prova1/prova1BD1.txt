@@ -1,0 +1,70 @@
+--QUESTAO 1
+--a) O super-herói Zezé Pera já usou quais poderes em suas batalhas ?
+select distinct(nome_poder)
+from poder a, poderes_usados b, batalha c, heroi d
+where a.cod_poder = b.cod_poder 
+and b.cod_batalha = c.cod_batalha
+and c.cod_heroi = d.cod_heroi
+and lower(d.nome_heroi) = 'zezé pêra';
+
+--b) O vilao Roger Klotz ja enfrentou quais super-herois ?
+select distinct(nome_heroi)
+from heroi a, batalha b, vilao c
+where a.cod_heroi = b.cod_heroi
+and b.cod_vilao = c.cod_vilao
+and lower(nome_vilao) = 'roger klotz';
+
+--c) Quais viloes participaram de batalhas no mes de setembro ?
+select distinct(nome_vilao)
+from vilao a, batalha b
+where a.cod_vilao = b.cod_vilao
+and to_char(b.data_batalha, 'MM') = '09';
+
+--d) Quais poderes foram usados nas batalhas localizadas no barroca ?
+select distinct(nome_poder)
+from poder a, poderes_usados b, batalha c, local d
+where a.cod_poder = b.cod_poder
+and b.cod_batalha = c.cod_batalha
+and c.cod_local = d.cod_local
+and lower(d.nome_local) = 'barroca';
+
+--e)Quais super-herois ja usaram o poder da invisibilidade ?
+select distinct(nome_heroi)
+from heroi a, batalha b, poderes_usados c, poder d
+where a.cod_heroi = b.cod_heroi
+and b.cod_batalha = c.cod_batalha
+and d.cod_poder = c.cod_poder
+and lower(d.nome_poder) = 'invisibilidade';
+
+--QUESTAO 3
+--a) Em quais dias ocorreram compras ?
+select distinct(to_char(data_compra, 'DD/MM/YYYY')) 
+from compra_prova_a;
+
+--b) Qual o maior valor de compra registrado ?
+select max(valor_compra)
+from compra_prova_a;
+
+--c) Quais clientes ja compraram o produto MP3 ?
+select distinct(nome_cliente)
+from cliente_prova_a a, compra_prova_a b, lista_compra_prova_a c, produto_prova_a d
+where a.cod_cliente = b.cod_cliente
+and b.cod_compra = c.cod_compra
+and c.cod_produto = d.cod_produto
+and lower(d.nome_produto) = 'mp3';
+
+--d) Quais usuarios tem a terceira letra do nome igual a 'c' ?
+select nome_cliente
+from cliente_prova_a
+where nome_cliente like '__c%';
+
+--e) Quantos produtos diferentes o cliente Ze buscape ja comprou ?
+select count(distinct(nome_produto) 
+from produto_prova_a a, lista_compra_prova_a b, compra_prova_a c, cliente_prova_a d
+where a.cod_produto = b.cod_produto
+and b.cod_compra = c.cod_compra
+and c.cod_cliente = d.cod_cliente
+and lower(d.nome_cliente) = 'zé buscapé';
+
+
+

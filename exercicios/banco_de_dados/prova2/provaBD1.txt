@@ -1,0 +1,128 @@
+--Prova 2 Gabriel Lopes da Silva Ladeira
+--Questao 1
+--Letra a
+select nome_artigo
+from codigo_penal
+where pena_maxima = (select max(pena_maxima)
+                  from codigo_penal);
+                  
+--Letra b
+select nome_advogado
+from advogado a, julgamento j, reu r
+where a.cod_advogado = j.cod_julgamento
+and j.cod_reu = r.cod_reu
+and a.cod_advogado not in (select j.cod_advogado
+                            from advogado a, julgamento j, reu r
+                            where j.cod_reu = r.cod_reu
+                            and a.cod_advogado = j.cod_advogado
+                            and lower(sexo) = 'f'
+                            group by j.cod_advogado);
+--Letra c
+select nome_juiz
+from juiz z, julgamento j
+where z.cod_juiz = j.cod_juiz
+group by nome_juiz
+having count(j.cod_juiz) = (select max(count(cod_juiz))
+                            from julgamento
+                            group by cod_juiz);
+--Letra d
+select distinct(nome_reu)
+from reu r, julgamento j, acusacao a
+where a.cod_julgamento = j.cod_julgamento
+and r.cod_reu = j.cod_reu
+and veredicto = 'C'
+and pena < (select avg(pena)
+            from acusacao
+            where veredicto = 'C');
+
+--letra e
+select nome_juiz
+from juiz z, julgamento j, acusacao a
+where z.cod_juiz = j.cod_juiz
+and a.cod_julgamento = j.cod_julgamento
+and veredicto = 'I'
+group by nome_juiz
+having count(z.cod_juiz) = (select max(count(cod_juiz))
+                            from julgamento j, acusacao a
+                            where j.cod_julgamento = a.cod_julgamento
+                            and veredicto = 'I'
+                            group by cod_juiz);
+                            
+--letra F
+select count(nome_reu), veredicto
+from reu r, julgamento j, acusacao a
+where j.cod_julgamento = a.cod_julgamento
+and r.cod_reu = j.cod_reu
+and idade < 18
+group by veredicto;
+
+--letra g
+select nome_reu
+from reu r, julgamento j
+where r.cod_reu = j.cod_reu
+group by nome_reu
+having count(j.cod_reu) = (select max(count(cod_reu))
+                        from julgamento
+                        group by cod_reu);
+
+--letra h
+select nome_reu, nome_artigo,pena
+from reu r, julgamento j, acusacao a, codigo_penal c
+where r.cod_reu = j.cod_reu
+and a.cod_julgamento = j.cod_julgamento
+and a.cod_artigo = c.cod_artigo
+and veredicto = 'C'
+order by 3 desc;
+
+--letra i
+select nome_artigo
+from codigo_penal c, acusacao a
+where a.cod_artigo = c.cod_artigo
+group by nome_artigo
+having count(a.cod_artigo) = (select max(count(cod_artigo))
+                              from acusacao
+                              group by cod_artigo);
+
+--letra j
+select to_char(data_julgamento,'MONTH')
+from julgamento j
+group by data_julgamento
+having count(data_julgamento) = (select max(count(data_julgamento))
+                                 from julgamento
+                                 group by data_julgamento);
+
+--QUESTOES FECHADAS
+--2) A
+--3) B
+--4) D
+--5) C
+--6) D
+--7) B
+--Questao 8
+--letra a
+create table time_futebol
+(cod_time number(3) constraint time_pk primary key,
+nome_time varchar2(30) constraint time_c not null);
+
+create table amistoso
+(cod_amistoso number(3) constraint amistoso_pk primary key,
+data_amistoso date constraint amistoso_cs1 not null, --eu optei por ser not null
+local_amistoso varchar2(30) constraint lamistoso_cs2 not null, --ja que sao os unicos valores especificos do amistoso
+cod_time number(3) constraint time_fk references time_futebol(cod_time));
+
+
+--letra b
+grant select,insert on time_futebol TO user_GILBERTO;
+
+--letra c
+create table pais
+(cod_pais number(3) constraint pais_pk primary key,
+nome_pais varchar(30) constraint nome_cs not null);
+
+alter table time_futebol
+add (cod_pais number(3) constraint pais_fk references pais(cod_pais));
+
+--letra d
+drop table time_futebol cascade constraints;
+
+                            

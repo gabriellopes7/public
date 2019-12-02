@@ -1,0 +1,781 @@
+--Lista 3
+--Questao a
+select desc_proposta
+from proposta a, assembleia b
+where a.cod_assembleia = b.cod_assembleia
+and to_char(b.data_assembleia, 'DD/MM/YYYY') = '06/08/2010';
+
+--b)
+select nome_morador
+from morador
+order by nome_morador;
+
+--c)
+select nome_morador
+from morador a, apartamento b, predio c
+where a.cod_apto = b.cod_apto 
+and b.cod_predio = c.cod_predio
+and lower(c.nome_predio) = 'coqueiral';
+
+--d)
+select nome_morador, nome_predio
+from morador a, apartamento b, predio c
+where a.cod_apto = b.cod_apto
+and b.cod_predio = c.cod_predio
+order by nome_predio;
+
+--d)
+select nome_morador
+from morador a, apartamento b, predio c
+where a.cod_apto = b.cod_apto
+and b.cod_predio = c.cod_predio
+and b.numero_apto = 201
+and lower(c.nome_predio) = 'laranjeiras';
+
+--f)
+select*from votacao;
+
+select nome_morador
+from morador a, votacao b, proposta c
+where a.cod_morador = b.cod_morador
+and b.cod_proposta = c.cod_proposta
+and lower(b.voto) = 'd'
+and lower(c.desc_proposta) = 'adoção de energia solar';
+
+--g)
+select nome_morador
+from morador
+where nome_morador not in 
+(select nome_morador
+from morador a, votacao b, proposta c, assembleia d
+where a.cod_morador = b.cod_morador
+and b.cod_proposta = c.cod_proposta
+and c.cod_assembleia = d.cod_assembleia
+and to_char(d.data_assembleia, 'DD/MM/YYYY') = '07/09/2010');
+
+--h)
+select count(nome_morador), data_assembleia
+from assembleia a, proposta b, votacao c, morador d
+where a.cod_assembleia = b.cod_assembleia
+and b.cod_proposta = c.cod_proposta 
+and c.cod_morador = d.cod_morador
+group by a.data_assembleia;
+
+--i)
+select nome_morador, count(a.cod_assembleia)
+from morador m, votacao v, proposta p, assembleia a
+where m.cod_morador = v.cod_morador
+and p.cod_proposta = v.cod_proposta
+and p.cod_assembleia = a.cod_assembleia
+group by m.nome_morador
+having count(a.cod_assembleia) = (select max(count (a.cod_assembleia))
+                                  from morador m, votacao v, proposta p, assembleia a
+                                    where m.cod_morador = v.cod_morador
+                                    and p.cod_proposta = v.cod_proposta
+                                    and p.cod_assembleia = a.cod_assembleia
+                                    group by m.nome_morador);
+--j)
+select nome_predio, numero_apto
+from predio p, apartamento a, morador m
+where p.cod_predio = a.cod_predio
+and a.cod_apto = m.cod_apto
+and lower(nome_morador) = 'pombo doodle';
+
+--k)
+select nome_predio
+from predio p, apartamento a, morador m
+where p.cod_predio = a.cod_predio
+and a.cod_apto = m.cod_apto
+group by nome_predio
+having count(m.cod_morador) = (select max(count(m.cod_morador))
+                            from predio p, apartamento a, morador m
+                            where p.cod_predio = a.cod_predio
+                            and a.cod_apto = m.cod_apto
+                            group by nome_predio);
+                            
+--l)
+select avg(count(voto))
+from votacao v, proposta p, assembleia a
+where v.cod_proposta = p.cod_proposta
+and p.cod_assembleia = a.cod_assembleia
+group by data_assembleia;
+
+--m)
+select count(cod_proposta), data_assembleia
+from proposta p, assembleia a
+where p.cod_assembleia = a.cod_assembleia
+group by data_assembleia;
+
+--n)
+select data_assembleia
+from assembleia a, proposta p
+where a.cod_assembleia = p.cod_assembleia
+group by data_assembleia
+having count(desc_proposta) = (select min(count(desc_proposta))
+                            from assembleia a, proposta p
+                            where a.cod_assembleia = p.cod_assembleia
+                            group by data_assembleia);
+                            
+--o)
+select count(nome_predio)
+from predio;
+
+--p)
+
+--Q1
+select nome_especialidade
+from especialidade e, servico s, hospital h
+where e.cod_especialidade = s.cod_especialidade and h.cod_hospital = s.cod_hospital
+group by nome_especialidade;
+
+--Q2
+select nome_bairro
+from bairro;
+
+--Q3
+select nome_plano
+from plano_saude;
+
+--Q4
+select count(nome_medico)
+from medico;
+
+--Q5
+select distinct nome_medico
+from medico m, servico s, plano_saude ps
+where lower(ps.nome_plano) = 'pró saúde' and m.cod_medico = s.cod_medico and ps.cod_plano = s.cod_plano;
+
+--
+create table devedor 
+(cod_devedor number constraint devedor_pk primary key,
+nome_devedor varchar(30) constraint devedor_nome_nu not null);
+
+create table indice
+(cod_indice number constraint indice_pk primary key,
+nome_indice varchar(30) constraint indice_nome_nu not null);
+
+
+create table contrato
+(num_contrato number constraint contrato_pk primary key,
+cod_devedor number constraint devedor_fk references devedor(cod_devedor),
+valor_inicial number constraint contrato_valor_inicial not null,
+num_parcelas number constraint contrato_num_parcelas not null,
+saldo_devedor number constraint contrato_saldo_devedor not null,
+dia_vencimento char(2) constraint contrato_dia_vencimento not null,
+cod_indice number constraint indice_fk references indice(cod_indice));
+
+create table pagamento
+(cod_pagamento number constraint pagamento_pk primary key,
+num_contrato number constraint contrato_fk references contrato(num_contrato),
+data_pagamento date constraint pagamento_data_pagamento not null,
+valor_pagamento number constraint pagamento_valor_pagamento not null);
+
+insert into devedor (cod_devedor, nome_devedor)
+values 
+(6, 'Marcie');
+
+insert into pagamento(cod_pagamento, num_contrato, data_pagamento,valor_pagamento)
+values
+(1,3,'01/05/2018',1245.74);
+
+insert into indice(cod_indice, nome_indice)
+values
+(3,'CDB');
+
+insert into contrato(num_contrato, cod_devedor, valor_inicial,num_parcelas, saldo_devedor,dia_vencimento, cod_indice)
+values(5,5,25000.00,24,55000,10,2);
+
+insert into pagamento(cod_pagamento, num_contrato, data_pagamento, valor_pagamento)
+values (2,2,TO_DATE('10/05/2018','DD/MM/YYYY'), 3545.01);
+
+alter table devedor
+add (dt_nascimento date,
+sexo char(1));
+
+update devedor set dt_nascimento = TO_DATE('29/09/1991','DD/MM/YYYY'),sexo = 'M'
+where cod_devedor = 6;
+
+select*from devedor;
+
+alter table devedor
+modify dt_nascimento date constraint devedor_dt_nascimento not null;
+
+insert into pagamento
+values(3,2,TO_DATE('07/11/2019','DD/MM/YYYY'),987.56);
+
+alter table indice
+modify nome_indice varchar(50);
+
+desc indice;
+--a) Quais tarefas distintas a Charlene Silvassauro executou no dia 02/10/2010?
+select count(distinct cod_tarefa)
+from atendimento a, funcionario f
+where f.cod_funcionario = a.cod_funcionario
+and lower(nome_funcionario) = 'charlene silvassauro'
+and to_char(data_atendimento,'DD/MM/YYYY') = '02/10/2010';
+--b) Quantas coletas de sangue já foram realizada?
+select count(a.cod_tarefa)
+from atendimento a, tarefa t
+where a.cod_tarefa = t.cod_tarefa
+and lower(desc_tarefa) = 'coletar sangue';
+
+--c) Qual(is) funcionário(s) trabalha(m) na Enfermagem?
+select nome_funcionario
+from funcionario f, departamento d
+where f.cod_departamento = d.cod_departamento
+and lower(nome_departamento) = 'enfermagem';
+--d) Qual(is) paciente(s) tem a letra ‘u’ e ‘y’ no nome?
+select nome_paciente
+from paciente
+where nome_paciente like '%u%y%' or nome_paciente like '%y%u%';
+--e) Qual(is) enfermeiro(s) tem a letra ‘P’ MAIÚSCULA no nome?
+select nome_funcionario
+from funcionario f, departamento d
+where f.cod_departamento = d.cod_departamento
+and lower(nome_departamento) = 'enfermagem'
+and nome_funcionario like '%P%';
+--f) Qual(is) tarefa(s) foi(ram) executada(s) no dia 03/10/2010?
+select desc_tarefa
+from tarefa t, atendimento a
+where t.cod_tarefa = a.cod_tarefa
+and to_char(data_atendimento,'DD/MM/YYYY') = '03/10/2010'
+group by desc_tarefa;
+--g) Qual(is) funcionário(s) distintos atendeu(ram) o paciente ‘Muttley’?
+select distinct(nome_funcionario)
+from funcionario f, atendimento a, paciente p
+where f.cod_funcionario = a.cod_funcionario
+and a.cod_paciente = p.cod_paciente
+and lower(nome_paciente) = 'muttley';
+
+--h) Por qual(is) procedimento(s) o paciente ‘Krusty’ já passou?
+
+--i) Quais pacientes nunca fizeram o procedimento ‘Realizar Ultrasom’?
+--j) Quantos atendimentos aconteceram no dia 07/10/2010?
+
+--1) Qual o nome e a data de nascimento do passageiro que tem a penúltima letra do nome igual a 'g' minúsculo?
+select nome_passageiro, to_char(data_nascimento,'DD/MM/YYYY')
+from passageiro
+where lower(nome_passageiro) like '%_g_';
+--2) Quais passageiros nasceram em 2008?
+select nome_passageiro
+from passageiro
+where to_char(data_nascimento,'YYYY') = '2008';
+--3) Quem é o passageiro mais novo? (menor idade)
+select nome_passageiro
+from passageiro
+where data_nascimento = (select max(data_nascimento)
+                         from passageiro);
+--4) Qual a média de idade dos passageiros que vão a Natal?
+select avg((sysdate-data_nascimento)/365)
+from passageiro p, ticket t, lugar l
+where p.cod_passageiro = t.cod_passageiro
+and t.cod_destino = l.cod_destino
+and lower(nome_lugar) = 'natal';
+
+--5) Para quantos destinos diferentes a passageira Lili já foi?
+select count(distinct(cod_destino)), nome_passageiro
+from ticket t, passageiro p
+where lower(nome_passageiro) = 'lili'
+group by nome_passageiro;
+--6) Quais passageiros já viajaram para Belo Horizonte?
+select nome_passageiro
+from passageiro p, ticket t, lugar l
+where p.cod_passageiro = t.cod_passageiro
+and t.cod_destino = l.cod_lugar
+and lower(nome_lugar) = 'belo horizonte'
+group by nome_passageiro;
+--7) Quantos passageiros já partiram de Belo Horizonte?
+select count(distinct(nome_passageiro))
+from passageiro p, ticket t, lugar l
+where p.cod_passageiro = t.cod_passageiro
+and t.cod_origem = l.cod_lugar
+and lower(nome_lugar) = 'belo horizonte';
+
+select count(nome_passageiro)
+from passageiro p, ticket t, lugar l
+where p.cod_passageiro = t.cod_passageiro
+and t.cod_origem = l.cod_lugar
+and lower(nome_lugar) = 'belo horizonte';
+--8) Quantos passageiros viajaram no dia 23 de dezembro de 2014?
+select count(nome_passageiro)
+from passageiro p, ticket t
+where p.cod_passageiro = t.cod_passageiro
+and to_char(data_ticket,'DD/MM/YYYY') = '23/12/2014';
+--9) Quando? de onde? e para onde? foi o último ticket?
+select data_ticket, o.nome_lugar as origem, d.nome_lugar as destino
+from ticket t inner join lugar o on (o.cod_lugar=t.cod_origem)
+inner join lugar d on (t.cod_destino = d.cod_lugar)
+where data_ticket = (select max(data_ticket)
+                     from ticket);
+--10) Qual o destino com maior procura?
+select d.nome_lugar
+from ticket t inner join lugar d on (t.cod_destino = d.cod_lugar)
+group by nome_lugar
+having count(cod_ticket) = (select max(count(cod_ticket))
+                            from ticket
+                            group by cod_destino);
+
+--11) Quantos passageiros cada destino já recebeu?
+select count(cod_ticket) as passagens, d.nome_lugar as destino
+from ticket t inner join lugar d on(t.cod_destino = d.cod_lugar)
+group by nome_lugar;
+--12) Qual o total de passagens vendidas até hoje?
+select count(cod_ticket) as passagens
+from ticket;
+--13) Qual a quantidade de cidades por estado (UF)?
+select count(nome_lugar), uf
+from lugar
+group by uf;
+select*from lugar;
+
+--a) Liste o nome dos candidatos com seus respectivos cargos.
+select nome_candidato, nome_cargo
+from candidato c left join cargo p on (c.cod_cargo = p.cod_cargo);
+
+SELECT NOME_CANDIDATO, NOME_CARGO 
+FROM CANDIDATO A, CARGO B
+WHERE A.COD_CARGO = B.COD_CARGO;
+--b) Quais candidatos tem a letra P no nome?
+select nome_candidato
+from candidato
+where lower(nome_candidato) like '%p%';
+--c) Quais os candidatos do partido PQX?
+select nome_candidato
+from candidato c, partido p
+where c.cod_partido = p.cod_partido
+and lower(nome_partido) = 'pqx';
+--d) Para quais cargos o partido PZY tem candidato?
+select nome_cargo
+from cargo c, partido p, candidato n
+where c.cod_cargo = n.cod_cargo
+and p.cod_partido = n.cod_partido
+and lower(nome_partido) = 'pzy'
+group by nome_cargo;
+--e) Qual o total de votos na eleição?
+select count(*) from voto;
+--f) Quantos votos o candidato Cebolinha teve?
+select count(*)
+from voto 
+where numero = (select numero from candidato where lower(nome_candidato) = 'cebolinha');
+SELECT COUNT(*)
+FROM VOTO 
+WHERE NUMERO = (SELECT NUMERO FROM CANDIDATO WHERE NOME_CANDIDATO LIKE 'Cebolinha');
+SELECT COUNT(*)
+FROM VOTO V, CANDIDATO C
+WHERE C.NUMERO = V.NUMERO
+AND NOME_CANDIDATO LIKE 'Cebolinha';
+--g) Quantos votos teve o partido PXL teve?
+select count(numero)
+from voto
+where numero in (select numero
+                from candidato c, partido p
+                where p.cod_partido = c.cod_partido
+                and lower(nome_partido) = 'pxl');
+SELECT COUNT(*)
+FROM VOTO V, CANDIDATO C, PARTIDO P
+WHERE C.NUMERO = V.NUMERO
+AND C.COD_PARTIDO = P.COD_PARTIDO
+AND NOME_PARTIDO LIKE 'PXL';
+--h) Quantos votos o partido PQX teve para Senador?
+select count(*)
+from voto
+where numero in (select numero
+                from candidato c, partido p, cargo r
+                where c.cod_cargo = r.cod_cargo
+                and p.cod_partido = c.cod_partido
+                and lower(nome_cargo) = 'senador'
+                and lower(nome_partido) = 'pqx');
+--i) Divulgue o resultado (candidato, total de votos) para eleição de Presidente.
+SELECT NOME_CANDIDATO, COUNT(V.NUMERO)
+FROM CANDIDATO C, VOTO V, CARGO X
+WHERE C.NUMERO = V.NUMERO
+AND X.COD_CARGO = C.COD_CARGO
+AND NOME_CARGO LIKE 'Presidente'
+GROUP BY NOME_CANDIDATO
+ORDER BY 2 DESC;
+--j) Qual o partido da candidata Mônica?
+select nome_partido
+from partido p, candidato c
+where p.cod_partido = c.cod_partido
+and lower(nome_candidato) = 'mônica';
+--k) Quais partidos têm candidatos para Presidente?
+select nome_partido
+from partido p, candidato c, cargo r
+where p.cod_partido = c.cod_partido
+and c.cod_cargo = r.cod_cargo
+and lower(nome_cargo) = 'presidente'
+group by nome_partido;
+--l) Qual a quantidade de votos cada candidato recebeu?
+select count(v.numero), nome_candidato
+from voto v, candidato c
+where v.numero = c.numero
+group by nome_candidato
+order by 1 desc;
+
+--questao 1
+select desc_proposta
+from proposta p, assembleia a
+where p.cod_assembleia = a.cod_assembleia
+and to_char(data_assembleia,'DD/MM/YYYY') = '06/08/2010';
+
+--questao 2
+select nome_morador
+from morador
+order by nome_morador;
+
+--questao 3
+select nome_morador
+from morador m, apartamento a, predio p
+where m.cod_apto = a.cod_apto
+and p.cod_predio = a.cod_predio
+and lower(nome_predio) = 'coqueiral';
+
+--questao 4
+select nome_morador, nome_predio
+from predio p, morador m, apartamento a
+where p.cod_predio = a.cod_predio
+and m.cod_apto = a.cod_apto
+order by nome_predio;
+
+--questao 5
+select nome_morador
+from morador m, apartamento a, predio p
+where m.cod_apto = a.cod_apto
+and a.cod_predio = p.cod_predio
+and numero_apto = 201
+and lower(nome_predio) = 'laranjeiras';
+
+--questao 6
+select nome_morador
+from morador m, votacao v, proposta p
+where m.cod_morador = v.cod_morador
+and v.cod_proposta = p.cod_proposta
+and lower(voto) = 'f'
+and lower(desc_proposta) = 'adoção de energia solar';
+
+--questao 7
+select nome_morador
+from morador
+where cod_morador not in (select cod_morador
+                            from votacao v, proposta p, assembleia a
+                            where v.cod_proposta = p.cod_proposta
+                            and p.cod_assembleia = a.cod_assembleia
+                            and to_char(data_assembleia, 'DD/MM/YYYY') = '07/09/2010');
+
+--questao h
+select count(nome_morador), data_assembleia
+from morador m, assembleia a, votacao v, proposta p
+where m.cod_morador = v.cod_morador
+and p.cod_proposta = v.cod_proposta
+and a.cod_assembleia = p.cod_assembleia
+group by data_assembleia;
+
+--questao i
+select nome_morador
+from morador m, votacao v
+where m.cod_morador = v.cod_morador
+group by nome_morador
+having count(m.cod_morador) = (select max(count(v.cod_morador))
+                             from votacao v
+                             group by v.cod_morador );
+                             
+--j) Qual o endereço (prédio e apto) do morador Pombo Doodle?
+select numero_apto, nome_predio
+from apartamento a, predio p, morador m
+where a.cod_predio = p.cod_predio
+and a.cod_apto = m.cod_apto
+and lower(nome_morador) = 'pombo doodle';
+--k) Qual o prédio tem maior número de moradores?
+select nome_predio
+from predio p, apartamento a, morador m
+where p.cod_predio = a.cod_predio
+and m.cod_apto = a.cod_apto
+group by nome_predio
+having count(cod_morador) = (select max(count(m.cod_morador))
+                             from morador m, apartamento a, predio p
+                             where a.cod_apto = m.cod_morador
+                             and p.cod_predio = a.cod_predio
+                             group by nome_predio);
+--l) Qual a média de votação por assembléia?
+select avg(count(voto))
+from votacao v, proposta p, assembleia a
+where v.cod_proposta = p.cod_proposta
+and a.cod_assembleia = p.cod_assembleia
+group by data_assembleia;
+--m) Qual o número de propostas por assembléia?
+select count(desc_proposta), data_assembleia
+from proposta p, assembleia a
+where p.cod_assembleia = a.cod_assembleia
+group by data_assembleia;
+--n) Qual assembléia teve menor quantidade de propostas?
+select data_assembleia
+from assembleia a, proposta p
+where a.cod_assembleia = p.cod_assembleia
+group by data_assembleia
+having count(desc_proposta) = (select min(count(desc_proposta))
+                                from proposta p, assembleia a
+                                where p.cod_assembleia = a.cod_assembleia
+                                group by data_assembleia);
+--o) Quantos prédios participam do condomínio?
+select count(cod_predio)
+from predio;
+--p) Quando ocorreu a primeira assembléia?
+select data_assembleia
+from assembleia
+where data_assembleia = (select min(data_assembleia)
+                        from assembleia);
+select to_char(min(data_assembleia),'DD/MM/YYYY')
+from assembleia;
+--q) Quais moradores participaram da última assembléia?
+select nome_morador
+from morador
+where cod_morador in (select cod_morador 
+                      from votacao v, proposta p, assembleia a
+                      where p.cod_proposta = v.cod_proposta
+                      and a.cod_assembleia = p.cod_assembleia
+                      and data_assembleia = (select max(data_assembleia)
+                                             from assembleia));
+--r) Qual o resultado da votação da assembléia do dia 05/07/2010?
+select voto, count(voto)
+from votacao v, assembleia a, proposta p
+where v.cod_proposta = p.cod_proposta
+and a.cod_assembleia = p.cod_assembleia
+and to_char(data_assembleia,'DD/MM/YYYY') = '05/07/2010'
+group by voto;
+--s) Como o morador Papai Smurf votou para cada proposta?
+select voto, desc_proposta
+from proposta p, votacao v, morador m
+where m.cod_morador = v.cod_morador
+and p.cod_proposta = v.cod_proposta
+and lower(nome_morador) = 'papai smurf';
+--t) Qual proposta teve o maior índice de rejeição?
+select desc_proposta
+from proposta p, votacao v
+where p.cod_proposta = v.cod_proposta
+and voto = 'C'
+group by desc_proposta
+having count(voto) = (select max(count(voto))
+                      from votacao v, proposta p
+                      where p.cod_proposta = v.cod_proposta
+                      and voto = 'C'
+                      group by desc_proposta);
+					  
+-- Questao 1
+select desc_setor from setor;
+
+--Questao 2
+select nome_empregado from empregado;
+
+--Questao 3
+select * from dependente;
+
+--Questao 4
+select nome_tipo from tipo;
+
+--Questao 5
+select desc_setor 
+from setor
+where desc_setor like 'Produção %';
+
+--Questao 6
+select nome_dependente, dt_nascimento
+from dependente;
+
+--Questao 7
+select nome_dependente, dt_nascimento
+from dependente
+where dt_nascimento is not null
+order by dt_nascimento desc
+;
+
+--Questao 8
+select nome_dependente;
+
+--Questao 9
+select nome_dependente
+from dependente dep, empregado emp
+where dep.cod_empregado = emp.cod_empregado and nome_empregado = 'Homer Simpson';
+
+--Questao 10
+select nome_empregado
+from empregado e, dependente d
+where e.cod_empregado = d.cod_empregado and nome_dependente = 'Zezé Pêra';
+
+--Questao 11
+select nome_dependente
+from dependente
+where nome_dependente like 'M%';
+
+--Quetao 12
+select nome_empregado
+from empregado
+where nome_empregado like '%son';
+
+--Questao 13
+select nome_empregado
+from empregado
+where nome_empregado not like 'Pat%';
+
+--Questao 14
+select nome_empregado
+from empregado
+where salario <= 1000;
+
+--Questao 15
+select nome_empregado
+from empregado
+where salario between 2000 and 3000;
+
+--Questao 16
+select nome_empregado
+from empregado
+where to_char(admissao, 'DD/MM/YYYY') = '30/04/2012';
+
+--Questao 17
+select nome_empregado
+from empregado
+where to_char (admissao, 'MM') = '05';
+
+--Questao 18
+select nome_empregado
+from empregado
+where admissao between to_date('10/05/2012') and to_date('30/05/2012');
+
+--Questao 19
+select nome_dependente
+from dependente
+where to_char(dt_nascimento, 'YYYY') = '2004';
+
+--Questao 20
+select salario
+from empregado
+where salario = (select min(salario) from empregado);
+
+--Questao 21
+select avg(salario) 
+from empregado;
+
+--Questão 22
+select trunc((sysdate - dt_nascimento)/365)-- SYSDATE - DATA DO SISTEMA
+from dependente
+where lower(nome_dependente) = 'margarida';
+
+--Questao 23
+select nome_dependente
+from dependente
+where dt_nascimento is null;
+
+--Questao 24
+select nome_tipo
+from tipo t, dependente d, empregado e
+where e.nome_empregado = 'Pato Donald' and d.cod_dependente = e.cod_empregado and t.cod_tipo = d.cod_tipo;
+
+--Questao 25
+select nome_empregado
+from setor s, empregado e
+where lower(s.desc_setor) = 'produção de sólidos' and s.cod_setor = e.cod_setor;
+
+--Questao 26
+select nome_dependente, nome_empregado
+from dependente d, empregado e, tipo t
+where lower(nome_tipo) = 'agregado' and t.cod_tipo = d.cod_tipo and e.cod_empregado = d.cod_empregado;
+
+--Questao 27
+select nome_dependente
+from dependente d, empregado e, setor s
+where lower(s.desc_setor) = 'diretoria' and s.cod_setor = e.cod_setor and d.cod_empregado = e.cod_empregado;
+
+--Questao 28
+select nome_dependente
+from dependente d, empregado e
+where (lower(nome_empregado) = 'pato donald' or lower(nome_empregado) = 'pateta' or lower(nome_empregado) = 'homer simpson'
+or lower(nome_empregado) = 'cebolinha') and d.cod_empregado = e.cod_empregado;
+
+--Questao 29
+select nome_empregado
+from empregado e, dependente d
+where d.cod_empregado = e.cod_empregado
+group by nome_empregado;
+
+--Questao 30
+select count(nome_empregado)
+from empregado e, setor s
+where lower(desc_setor) = 'produção de sólidos' and s.cod_setor = e.cod_setor;
+
+--Questao 31
+select count(nome_dependente) --Count retorna a quantidade de linhas retornadas pelo SELECT
+from dependente d, tipo t
+where lower(nome_tipo) = 'agregado' and d.cod_tipo = t.cod_tipo;
+
+--Questao 32
+select desc_setor
+from setor
+where cod_setor in (select cod_setor from empregado where cod_empregado not in (select cod_empregado from dependente));
+
+--Questao 33
+select nome_dependente
+from dependente
+where dt_nascimento = (select min(dt_nascimento) from dependente);
+
+--Questao 34
+select nome_empregado
+from empregado
+where salario < (select avg(salario) from empregado);
+
+--Questao 35
+select nome_empregado
+from empregado
+where admissao = (select min(admissao) from empregado);
+
+--Questao 36
+select nome_empregado
+from empregado
+where salario = (select min(salario) from empregado);
+
+--Questao 37
+select desc_setor, count(cod_empregado)
+from setor s, empregado e
+where e.cod_setor = s.cod_setor
+group by desc_setor;
+
+--Questão 38
+select nome_empregado, count(cod_dependente)
+from empregado e, dependente d
+where e.cod_empregado = d.cod_empregado
+group by nome_empregado;
+
+--Questao 39
+select nome_empregado
+from empregado e, dependente d
+where e.cod_empregado = d.cod_empregado
+group by nome_empregado
+having count(d.cod_empregado) = (select max(count(cod_empregado)) from dependente 
+				group by cod_empregado);
+
+--Questao 40
+select nome_empregado
+from empregado e, dependente d
+where e.cod_empregado = d.cod_empregado
+group by nome_empregado
+having count(d.cod_empregado) = 1;
+
+--Qual setor esta o tio patinhas
+select desc_setor
+from setor s, empregado e
+where s.cod_setor = e.cod_setor and lower(e.nome_empregado) = 'tio patinhas';
+
+--Quais tipos de dependentes o setor de produção de sólidos tem ?
+select distinct(nome_tipo)
+from tipo t, dependente d, empregado e, setor s
+where t.cod_tipo = d.cod_tipo and 
+d.cod_empregado = e.cod_empregado and 
+e.cod_setor = s.cod_setor and 
+lower(s.desc_setor) = 'produção de sólidos';
+
+--Qual o valor total de pagamento dos empregados do setor de produção de sólidos
+select sum(salario)
+from empregado e, setor s
+where s.cod_setor = e.cod_setor and lower(desc_setor) = 'produção de sólidos';
+
+select sum(salario)
+from empregado;

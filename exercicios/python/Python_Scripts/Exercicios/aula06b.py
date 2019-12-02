@@ -1,0 +1,6 @@
+n = float(input('Digite um valor: '))
+print(n)
+s = input('Digite algo: ')
+print(s.isnumeric())
+print(s.isalpha())
+print(s.isalnum())
