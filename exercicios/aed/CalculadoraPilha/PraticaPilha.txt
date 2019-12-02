@@ -1,0 +1,78 @@
+﻿using System;
+
+namespace Pratica1_PilhaCalculadora
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Pilha p = new Pilha(100);
+            double i = 0;
+            string x;
+            double resultado;
+            int a, b;
+            do
+            {
+                x = Console.ReadLine();
+                if ((x == "*" || x == "/" || x == "+" || x == "-") && (p.vazia() == true || p.topo == 1))
+                {
+                    Console.WriteLine("Não há valores suficientes para calculo");
+                    Console.WriteLine("Pressione qualquer tecla para continuar");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
+                else if(p.cheia() == true)
+                {
+                    Console.WriteLine("Calculadora cheia");
+                    Console.ReadKey();
+                }
+                else if (double.TryParse(x, out i))
+                {
+                    Console.Clear();
+                    a = Convert.ToInt32(x);
+                    p.empilhar(a);
+                }
+                else if(x == "*" || x == "/" || x == "+" || x == "-")
+                {
+                    switch (x)
+                    {
+                        case "*":
+                            Console.Clear();
+                            a = p.desempilhar();
+                            b = p.desempilhar();
+                            p.empilhar(a * b);
+                            Console.WriteLine(a * b);
+                            break;
+                        case "/":
+                            Console.Clear();
+                            a = p.desempilhar();
+                            b = p.desempilhar();
+                            p.empilhar(a / b);
+                            Console.WriteLine(a / b);
+                            break;
+                            
+                        case "+":
+                            Console.Clear();
+                            a = p.desempilhar();
+                            b = p.desempilhar();
+                            p.empilhar(a + b);
+                            Console.WriteLine(a + b);
+                            break;
+                        case "-":
+                            Console.Clear();
+                            a = p.desempilhar();
+                            b = p.desempilhar();
+                            p.empilhar(a - b);
+                            Console.WriteLine(a - b);
+                            break;
+                    }
+
+                }
+            } while (p.cheia() == false);
+            Console.ReadKey();
+            
+
+            
+        }
+    }
+}
