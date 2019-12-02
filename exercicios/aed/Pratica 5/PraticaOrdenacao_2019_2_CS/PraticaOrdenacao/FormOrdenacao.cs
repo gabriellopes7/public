@@ -82,46 +82,7 @@ namespace Pratica5 {
                MessageBoxIcon.Information);
         }
 
-        private void bolhaToolStripMenuItem1_Click_1(object sender, EventArgs e) {
-            string preenchimento = "";
-            int tamanho = Convert.ToInt32(comboBox1.SelectedItem);
-            vet = new int[tamanho];
-            if (radioButton1.Checked)
-            {
-                Preenchimento.Crescente(vet, tamanho);
-                preenchimento = "Crescente";
-
-
-            }
-            else if (radioButton2.Checked)
-            {
-                Preenchimento.Decrescente(vet, tamanho);
-                preenchimento = "Decrescente";
-            }
-            else if (radioButton3.Checked)
-            {
-                Preenchimento.Aleatorio(vet, tamanho);
-                preenchimento = "Aleatório";
-            }
-            
-            
-            var stopwatch = new Stopwatch();
-            stopwatch.Start(); // inicia cronômetro
-            OrdenacaoEstatistica.Bolha(vet);
-            stopwatch.Stop(); // interrompe cronômetro
-            long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
-            MessageBox.Show(this,
-                  "Tamanho do vetor: " + tamanho +
-                  "\nOrdenação inicial: " + preenchimento +
-                  "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
-                  "\nNº de comparações: " + OrdenacaoEstatistica.cont_c +
-                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_c ,
-                  "Estatísticas do Método Bolha",
-                  MessageBoxButtons.OK,
-                  MessageBoxIcon.Information);
-            OrdenacaoEstatistica.cont_c = 0;
-            OrdenacaoEstatistica.cont_t = 0;
-        }
+        
 
         private void mergeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -179,6 +140,51 @@ namespace Pratica5 {
         }
 
         //METODOS ESTATISTICOS
+        #region Bolha
+        private void bolhaToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
+            string preenchimento = "";
+            int tamanho = Convert.ToInt32(comboBox1.SelectedItem);
+            vet = new int[tamanho];
+            if (radioButton1.Checked)
+            {
+                Preenchimento.Crescente(vet, tamanho);
+                preenchimento = "Crescente";
+
+
+            }
+            else if (radioButton2.Checked)
+            {
+                Preenchimento.Decrescente(vet, tamanho);
+                preenchimento = "Decrescente";
+            }
+            else if (radioButton3.Checked)
+            {
+                Preenchimento.Aleatorio(vet, tamanho);
+                preenchimento = "Aleatório";
+            }
+
+
+            var stopwatch = new Stopwatch();
+            stopwatch.Start(); // inicia cronômetro
+            OrdenacaoEstatistica.Bolha(vet);
+            stopwatch.Stop(); // interrompe cronômetro
+            long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
+            MessageBox.Show(this,
+                  "Tamanho do vetor: " + tamanho +
+                  "\nOrdenação inicial: " + preenchimento +
+                  "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
+                  "\nNº de comparações: " + OrdenacaoEstatistica.cont_c +
+                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_t,
+                  "Estatísticas do Método Bolha",
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Information);
+            OrdenacaoEstatistica.cont_c = 0; //ao final do método eu zero os contadores
+            OrdenacaoEstatistica.cont_t = 0;
+        }
+        #endregion
+
+        #region Seleção
         private void seleçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string preenchimento = "";
@@ -215,18 +221,20 @@ namespace Pratica5 {
             stopwatch.Stop(); // interrompe cronômetro
             long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
             MessageBox.Show(this,
-                  "Tamanho do vetor: " +tamanho+
+                  "Tamanho do vetor: " + tamanho +
                   "\nOrdenação inicial: " + preenchimento + 
                   "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
                   "\nNº de comparações: " + OrdenacaoEstatistica.cont_c +
-                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_c,
+                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_t,
                   "Estatísticas do Método Seleção",
                   MessageBoxButtons.OK,
                   MessageBoxIcon.Information);
             OrdenacaoEstatistica.cont_c = 0;
             OrdenacaoEstatistica.cont_t = 0;
         }
+        #endregion
 
+        #region Inserção
         private void inserçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string preenchimento = "";
@@ -267,13 +275,16 @@ namespace Pratica5 {
                   "\nOrdenação inicial: " + preenchimento +
                   "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
                   "\nNº de comparações: " + OrdenacaoEstatistica.cont_c +
-                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_c,
+                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_t,
                   "Estatísticas do Método Inserção",
                   MessageBoxButtons.OK,
                   MessageBoxIcon.Information);
             OrdenacaoEstatistica.cont_c = 0;
             OrdenacaoEstatistica.cont_t = 0;
         }
+        #endregion
+
+        #region ShellSort
 
         private void shellsortToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -315,14 +326,16 @@ namespace Pratica5 {
                   "\nOrdenação inicial: " + preenchimento +
                   "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
                   "\nNº de comparações: " + OrdenacaoEstatistica.cont_c +
-                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_c,
+                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_t,
                   "Estatísticas do Método ShellSort",
                   MessageBoxButtons.OK,
                   MessageBoxIcon.Information);
             OrdenacaoEstatistica.cont_c = 0;
             OrdenacaoEstatistica.cont_t = 0;
         }
+        #endregion
 
+        #region HeapSort
         private void heapsortToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             string preenchimento = "";
@@ -355,9 +368,7 @@ namespace Pratica5 {
             }
             var stopwatch = new Stopwatch();
             stopwatch.Start(); // inicia cronômetro
-
             iniciaAnimacao(() => OrdenacaoEstatistica.heapSort(vet));
-
             stopwatch.Stop(); // interrompe cronômetro
             long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
             MessageBox.Show(this,
@@ -365,14 +376,16 @@ namespace Pratica5 {
                   "\nOrdenação inicial: " + preenchimento +
                   "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
                   "\nNº de comparações: " + OrdenacaoEstatistica.cont_c +
-                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_c,
+                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_t,
                   "Estatísticas do Método HeapSort",
                   MessageBoxButtons.OK,
                   MessageBoxIcon.Information);
             OrdenacaoEstatistica.cont_c = 0;
             OrdenacaoEstatistica.cont_t = 0;
         }
+        #endregion
 
+        #region QuickSort
         private void quicksortToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             string preenchimento = "";
@@ -417,7 +430,7 @@ namespace Pratica5 {
                   "\nOrdenação inicial: " + preenchimento +
                   "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
                   "\nNº de comparações: " + OrdenacaoEstatistica.cont_c +
-                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_c,
+                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_t,
                   "Estatísticas do Método QuickSort",
                   MessageBoxButtons.OK,
                   MessageBoxIcon.Information);
@@ -425,7 +438,9 @@ namespace Pratica5 {
             OrdenacaoEstatistica.cont_t = 0;
 
         }
+        #endregion
 
+        #region MergeSort
         private void mergesortToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string preenchimento = "";
@@ -471,7 +486,7 @@ namespace Pratica5 {
                   "\nOrdenação inicial: " + preenchimento +
                   "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
                   "\nNº de comparações: " + OrdenacaoEstatistica.cont_c +
-                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_c,
+                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_t,
                   "Estatísticas do Método MergeSort",
                   MessageBoxButtons.OK,
                   MessageBoxIcon.Information);
@@ -479,6 +494,7 @@ namespace Pratica5 {
             OrdenacaoEstatistica.cont_t = 0;
 
         }
+        #endregion
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 

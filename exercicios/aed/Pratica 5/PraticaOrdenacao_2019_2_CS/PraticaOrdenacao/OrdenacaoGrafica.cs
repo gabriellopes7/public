@@ -5,6 +5,7 @@ namespace Pratica5 {
     class OrdenacaoGrafica {
         // TODO: declarar demais métodos de ordenação
         //BOLHA
+        #region Bolha
         public static void Bolha(int[] vet, Panel p) {
             int i, j, temp;
             for (i = 0; i < vet.Length - 1; i++) {
@@ -19,8 +20,10 @@ namespace Pratica5 {
                 Thread.Sleep(15); // espera 15 milisegundos
             }
         }
+        #endregion
 
         //SELECAO
+        #region Selecao
         public static void selecao(int[] vet, Panel p)
         {
             int i, j, min, temp;
@@ -41,8 +44,10 @@ namespace Pratica5 {
                 Thread.Sleep(15); // espera 15 milisegundos
             }
         }
+        #endregion
 
         //INSERCAO
+        #region Insercao
         public static void insercao(int[] vet, Panel p)
         {
             int temp, i, j;
@@ -60,8 +65,9 @@ namespace Pratica5 {
                 Thread.Sleep(15); // espera 15 milisegundos
             }
         }
-
+        #endregion
         //SHELL SORT
+        #region ShellSort
         public static void shellSort(int[] vet, Panel p)
         {
             int i, j, x, n;
@@ -90,8 +96,11 @@ namespace Pratica5 {
                 
             } while (h != 1);
         }
+        #endregion
 
         //QUICK SORT
+
+        #region QuickSort
         public static void quickSort(int[] vet, int esq, int dir, Panel p)
         {
             int i, j, x, temp;
@@ -117,8 +126,10 @@ namespace Pratica5 {
             if (esq < j) quickSort(vet, esq, j, p);
             if (i < dir) quickSort(vet, i, dir, p);
         }
-
+        #endregion
         //HEAP SORT
+
+        #region HeapSort
         public static void heapSort(int[] v, Panel p)
         {
             constroiMaxHeap(v);
@@ -161,8 +172,11 @@ namespace Pratica5 {
             v[j] = v[aposJ];
             v[aposJ] = aux;
         }
+        #endregion
 
         //MERGE SORT
+
+        #region MergeSort
         private static void merge(int[] v, int i, int m, int j)
         {
             int[] temp = new int[m - i + 1];
@@ -194,6 +208,7 @@ namespace Pratica5 {
                 Thread.Sleep(15); // espera 15 milisegundos
             }
         }
+        #endregion
 
     }
 }

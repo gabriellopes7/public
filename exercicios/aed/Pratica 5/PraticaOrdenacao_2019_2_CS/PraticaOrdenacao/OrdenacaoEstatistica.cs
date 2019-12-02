@@ -4,7 +4,8 @@
     {
         // TODO: contador de comparações e trocas
         // TODO: declarar demais métodos de ordenação
-        public static int cont_c, cont_t;
+        public static int cont_c =0;
+        public static int cont_t = 0;
         #region Bolha
         public static void Bolha(int[] vet)
         {
@@ -31,6 +32,7 @@
         public static void selecao(int[] vet)
         {
             int i, j, min, temp;
+            
             for (i = 0; i < vet.Length - 1; i++)
             {
                 min = i;
@@ -46,7 +48,6 @@
                 vet[i] = vet[min];
                 vet[min] = temp;
                 cont_t++;
-
             }
         }
         #endregion
@@ -93,8 +94,9 @@
                     {
                         cont_c++;
                         vet[j] = vet[j - h];
-                        j -= h;
                         cont_t++;
+                        j -= h;
+                        
                     }
                     vet[j] = x;
                     
@@ -126,12 +128,16 @@
                 }                
                 if (i <= j)
                 {
+                    //Contei apenas uma troca, não considerei temp uma troca
                     temp = vet[i];
+                    
                     vet[i] = vet[j];
+                    
                     vet[j] = temp;
+                    cont_t++;
                     i++;
                     j--;
-                    cont_t++;
+                   
                 }
             } while (i <= j);
             if (esq < j) quickSort(vet, esq, j);
@@ -143,20 +149,29 @@
         #region HeapSort
         public static void heapSort(int[] v)
         {
+            
+           
             constroiMaxHeap(v);
             int n = v.Length;
 
             for (int i = v.Length - 1; i > 0; i--)
-            {
+            {              
+                
                 troca(v, i, 0);
+                cont_t++;
                 refaz(v, 0, --n);
+                cont_c++;
+                
             }
+            
         }
 
         private static void constroiMaxHeap(int[] v)
         {
             for (int i = v.Length / 2 - 1; i >= 0; i--)
+            {
                 refaz(v, i, v.Length);
+            }                
 
         }
 
@@ -173,17 +188,21 @@
                 if (vetor[max] > vetor[pos])
                 {
                     troca(vetor, max, pos);
+                    cont_t++;                   
+                    
                     refaz(vetor, max, tamanhoDoVetor);
                 }
+                cont_c++;
+                
             }
         }
 
         public static void troca(int[] v, int j, int aposJ)
         {
+            cont_t++;
             int aux = v[j];
             v[j] = v[aposJ];
-            v[aposJ] = aux;
-            cont_t++;
+            v[aposJ] = aux;            
         }
         #endregion
 
@@ -207,12 +226,14 @@
                     v[i++] = temp[esq++];
                     cont_t++;
                 }
+                
                 else
                 {
                     v[i++] = v[dir++];
                     cont_t++;
                 }
-                    
+                cont_c++;
+
             }
             while (esq < k)
                 v[i++] = temp[esq++];
