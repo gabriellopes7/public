@@ -1,0 +1,13 @@
+H:\AED\Pratica 4 - MaxMin\Pratica4-MaxMin\Pratica4-MaxMin\bin\Debug\Pratica4-MaxMin.exe.config
+H:\AED\Pratica 4 - MaxMin\Pratica4-MaxMin\Pratica4-MaxMin\bin\Debug\Pratica4-MaxMin.exe
+H:\AED\Pratica 4 - MaxMin\Pratica4-MaxMin\Pratica4-MaxMin\bin\Debug\Pratica4-MaxMin.pdb
+H:\AED\Pratica 4 - MaxMin\Pratica4-MaxMin\Pratica4-MaxMin\obj\Debug\Pratica4-MaxMin.csprojAssemblyReference.cache
+H:\AED\Pratica 4 - MaxMin\Pratica4-MaxMin\Pratica4-MaxMin\obj\Debug\Pratica4-MaxMin.csproj.CoreCompileInputs.cache
+H:\AED\Pratica 4 - MaxMin\Pratica4-MaxMin\Pratica4-MaxMin\obj\Debug\Pratica4-MaxMin.exe
+H:\AED\Pratica 4 - MaxMin\Pratica4-MaxMin\Pratica4-MaxMin\obj\Debug\Pratica4-MaxMin.pdb
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Pratica 4 - MaxMin\Pratica4-MaxMin\Pratica4-MaxMin\bin\Debug\Pratica4-MaxMin.exe.config
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Pratica 4 - MaxMin\Pratica4-MaxMin\Pratica4-MaxMin\bin\Debug\Pratica4-MaxMin.exe
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Pratica 4 - MaxMin\Pratica4-MaxMin\Pratica4-MaxMin\bin\Debug\Pratica4-MaxMin.pdb
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Pratica 4 - MaxMin\Pratica4-MaxMin\Pratica4-MaxMin\obj\Debug\Pratica4-MaxMin.csprojAssemblyReference.cache
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Pratica 4 - MaxMin\Pratica4-MaxMin\Pratica4-MaxMin\obj\Debug\Pratica4-MaxMin.exe
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Pratica 4 - MaxMin\Pratica4-MaxMin\Pratica4-MaxMin\obj\Debug\Pratica4-MaxMin.pdb

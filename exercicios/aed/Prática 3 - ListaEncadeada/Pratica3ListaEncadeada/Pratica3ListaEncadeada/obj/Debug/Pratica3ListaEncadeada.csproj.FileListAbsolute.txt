@@ -1,0 +1,13 @@
+H:\AED\Prática 3 - ListaEncadeada\Pratica3ListaEncadeada\Pratica3ListaEncadeada\bin\Debug\Pratica3ListaEncadeada.exe.config
+H:\AED\Prática 3 - ListaEncadeada\Pratica3ListaEncadeada\Pratica3ListaEncadeada\bin\Debug\Pratica3ListaEncadeada.exe
+H:\AED\Prática 3 - ListaEncadeada\Pratica3ListaEncadeada\Pratica3ListaEncadeada\bin\Debug\Pratica3ListaEncadeada.pdb
+H:\AED\Prática 3 - ListaEncadeada\Pratica3ListaEncadeada\Pratica3ListaEncadeada\obj\Debug\Pratica3ListaEncadeada.csprojAssemblyReference.cache
+H:\AED\Prática 3 - ListaEncadeada\Pratica3ListaEncadeada\Pratica3ListaEncadeada\obj\Debug\Pratica3ListaEncadeada.csproj.CoreCompileInputs.cache
+H:\AED\Prática 3 - ListaEncadeada\Pratica3ListaEncadeada\Pratica3ListaEncadeada\obj\Debug\Pratica3ListaEncadeada.exe
+H:\AED\Prática 3 - ListaEncadeada\Pratica3ListaEncadeada\Pratica3ListaEncadeada\obj\Debug\Pratica3ListaEncadeada.pdb
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Prática 3 - ListaEncadeada\Pratica3ListaEncadeada\Pratica3ListaEncadeada\bin\Debug\Pratica3ListaEncadeada.exe.config
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Prática 3 - ListaEncadeada\Pratica3ListaEncadeada\Pratica3ListaEncadeada\bin\Debug\Pratica3ListaEncadeada.exe
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Prática 3 - ListaEncadeada\Pratica3ListaEncadeada\Pratica3ListaEncadeada\bin\Debug\Pratica3ListaEncadeada.pdb
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Prática 3 - ListaEncadeada\Pratica3ListaEncadeada\Pratica3ListaEncadeada\obj\Debug\Pratica3ListaEncadeada.csprojAssemblyReference.cache
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Prática 3 - ListaEncadeada\Pratica3ListaEncadeada\Pratica3ListaEncadeada\obj\Debug\Pratica3ListaEncadeada.exe
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Prática 3 - ListaEncadeada\Pratica3ListaEncadeada\Pratica3ListaEncadeada\obj\Debug\Pratica3ListaEncadeada.pdb

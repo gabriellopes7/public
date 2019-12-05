@@ -1,0 +1,13 @@
+H:\AED\Prática 2 - Restaurante\Pratica2Restaurante\Pratica2Restaurante\bin\Debug\Pratica2Restaurante.exe.config
+H:\AED\Prática 2 - Restaurante\Pratica2Restaurante\Pratica2Restaurante\bin\Debug\Pratica2Restaurante.exe
+H:\AED\Prática 2 - Restaurante\Pratica2Restaurante\Pratica2Restaurante\bin\Debug\Pratica2Restaurante.pdb
+H:\AED\Prática 2 - Restaurante\Pratica2Restaurante\Pratica2Restaurante\obj\Debug\Pratica2Restaurante.csprojAssemblyReference.cache
+H:\AED\Prática 2 - Restaurante\Pratica2Restaurante\Pratica2Restaurante\obj\Debug\Pratica2Restaurante.csproj.CoreCompileInputs.cache
+H:\AED\Prática 2 - Restaurante\Pratica2Restaurante\Pratica2Restaurante\obj\Debug\Pratica2Restaurante.exe
+H:\AED\Prática 2 - Restaurante\Pratica2Restaurante\Pratica2Restaurante\obj\Debug\Pratica2Restaurante.pdb
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Prática 2 - Restaurante\Pratica2Restaurante\Pratica2Restaurante\bin\Debug\Pratica2Restaurante.exe.config
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Prática 2 - Restaurante\Pratica2Restaurante\Pratica2Restaurante\bin\Debug\Pratica2Restaurante.exe
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Prática 2 - Restaurante\Pratica2Restaurante\Pratica2Restaurante\bin\Debug\Pratica2Restaurante.pdb
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Prática 2 - Restaurante\Pratica2Restaurante\Pratica2Restaurante\obj\Debug\Pratica2Restaurante.csprojAssemblyReference.cache
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Prática 2 - Restaurante\Pratica2Restaurante\Pratica2Restaurante\obj\Debug\Pratica2Restaurante.exe
+C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Prática 2 - Restaurante\Pratica2Restaurante\Pratica2Restaurante\obj\Debug\Pratica2Restaurante.pdb

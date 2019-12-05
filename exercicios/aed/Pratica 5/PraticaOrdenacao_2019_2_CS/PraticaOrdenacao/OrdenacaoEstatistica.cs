@@ -148,9 +148,7 @@
 
         #region HeapSort
         public static void heapSort(int[] v)
-        {
-            
-           
+        {           
             constroiMaxHeap(v);
             int n = v.Length;
 
