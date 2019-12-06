@@ -156,9 +156,9 @@
             {              
                 
                 troca(v, i, 0);
-                cont_t++;
+                
                 refaz(v, 0, --n);
-                cont_c++;
+                
                 
             }
             
@@ -181,13 +181,15 @@
             {
 
                 if (right < tamanhoDoVetor && vetor[max] < vetor[right])
+                {
                     max = right;
+                }                   
 
                 if (vetor[max] > vetor[pos])
                 {
                     troca(vetor, max, pos);
-                    cont_t++;                   
-                    
+
+                    cont_c++;
                     refaz(vetor, max, tamanhoDoVetor);
                 }
                 cont_c++;
