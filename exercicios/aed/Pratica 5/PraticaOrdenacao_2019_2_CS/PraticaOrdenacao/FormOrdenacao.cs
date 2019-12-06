@@ -138,11 +138,21 @@ namespace Pratica5 {
         {
 
         }
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
 
+        }
+
+        private void FormOrdenacao_Load(object sender, EventArgs e)
+        {
+
+        }
         //METODOS ESTATISTICOS
         #region Bolha
         private void bolhaToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
+            OrdenacaoEstatistica.cont_c = 0; //ao final do método eu zero os contadores
+            OrdenacaoEstatistica.cont_t = 0;
             string preenchimento = "";
             int tamanho = Convert.ToInt32(comboBox1.SelectedItem);
             vet = new int[tamanho];
@@ -179,196 +189,36 @@ namespace Pratica5 {
                   "Estatísticas do Método Bolha",
                   MessageBoxButtons.OK,
                   MessageBoxIcon.Information);
-            OrdenacaoEstatistica.cont_c = 0; //ao final do método eu zero os contadores
-            OrdenacaoEstatistica.cont_t = 0;
+            
         }
         #endregion
 
         #region Seleção
         private void seleçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string preenchimento = "";
-            int tamanho = Convert.ToInt32(comboBox1.SelectedItem);
-            vet = new int[tamanho];
-            if (comboBox1.SelectedIndex == 0)
-            {
-                vet = new int[1000];
-                Preenchimento.Aleatorio(vet, 1000);
-            }
-            else if (comboBox1.SelectedIndex == 1)
-            {
-                vet = new int[10000];
-                Preenchimento.Aleatorio(vet, 10000);
-            }
-            else if (comboBox1.SelectedIndex == 2)
-            {
-                vet = new int[50000];
-                Preenchimento.Aleatorio(vet, 50000);
-            }
-            else if (comboBox1.SelectedIndex == 3)
-            {
-                vet = new int[100000];
-                Preenchimento.Aleatorio(vet, 100000);
-            }
-            else if (comboBox1.SelectedIndex == 4)
-            {
-                vet = new int[500000];
-                Preenchimento.Aleatorio(vet, 500000);
-            }
-            var stopwatch = new Stopwatch();
-            stopwatch.Start(); // inicia cronômetro
-            iniciaAnimacao(() => OrdenacaoEstatistica.selecao(vet));
-            stopwatch.Stop(); // interrompe cronômetro
-            long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
-            MessageBox.Show(this,
-                  "Tamanho do vetor: " + tamanho +
-                  "\nOrdenação inicial: " + preenchimento + 
-                  "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
-                  "\nNº de comparações: " + OrdenacaoEstatistica.cont_c +
-                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_t,
-                  "Estatísticas do Método Seleção",
-                  MessageBoxButtons.OK,
-                  MessageBoxIcon.Information);
             OrdenacaoEstatistica.cont_c = 0;
             OrdenacaoEstatistica.cont_t = 0;
-        }
-        #endregion
-
-        #region Inserção
-        private void inserçãoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
             string preenchimento = "";
             int tamanho = Convert.ToInt32(comboBox1.SelectedItem);
             vet = new int[tamanho];
-            if (comboBox1.SelectedIndex == 0)
+            if (radioButton1.Checked)
             {
-                vet = new int[1000];
-                Preenchimento.Aleatorio(vet, 1000);
+                Preenchimento.Crescente(vet, tamanho);
+                preenchimento = "Crescente";
             }
-            else if (comboBox1.SelectedIndex == 1)
+            else if (radioButton2.Checked)
             {
-                vet = new int[10000];
-                Preenchimento.Aleatorio(vet, 10000);
+                Preenchimento.Decrescente(vet, tamanho);
+                preenchimento = "Decrescente";
             }
-            else if (comboBox1.SelectedIndex == 2)
+            else
             {
-                vet = new int[50000];
-                Preenchimento.Aleatorio(vet, 50000);
-            }
-            else if (comboBox1.SelectedIndex == 3)
-            {
-                vet = new int[100000];
-                Preenchimento.Aleatorio(vet, 100000);
-            }
-            else if (comboBox1.SelectedIndex == 4)
-            {
-                vet = new int[500000];
-                Preenchimento.Aleatorio(vet, 500000);
+                Preenchimento.Aleatorio(vet, tamanho);
+                preenchimento = "Aleatório";
             }
             var stopwatch = new Stopwatch();
             stopwatch.Start(); // inicia cronômetro
-            iniciaAnimacao(() => OrdenacaoEstatistica.insercao(vet));
-            stopwatch.Stop(); // interrompe cronômetro
-            long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
-            MessageBox.Show(this,
-                  "Tamanho do vetor: " + tamanho +
-                  "\nOrdenação inicial: " + preenchimento +
-                  "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
-                  "\nNº de comparações: " + OrdenacaoEstatistica.cont_c +
-                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_t,
-                  "Estatísticas do Método Inserção",
-                  MessageBoxButtons.OK,
-                  MessageBoxIcon.Information);
-            OrdenacaoEstatistica.cont_c = 0;
-            OrdenacaoEstatistica.cont_t = 0;
-        }
-        #endregion
-
-        #region ShellSort
-
-        private void shellsortToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            string preenchimento = "";
-            int tamanho = Convert.ToInt32(comboBox1.SelectedItem);
-            vet = new int[tamanho];
-            if (comboBox1.SelectedIndex == 0)
-            {
-                vet = new int[1000];
-                Preenchimento.Aleatorio(vet, 1000);
-            }
-            else if (comboBox1.SelectedIndex == 1)
-            {
-                vet = new int[10000];
-                Preenchimento.Aleatorio(vet, 10000);
-            }
-            else if (comboBox1.SelectedIndex == 2)
-            {
-                vet = new int[50000];
-                Preenchimento.Aleatorio(vet, 50000);
-            }
-            else if (comboBox1.SelectedIndex == 3)
-            {
-                vet = new int[100000];
-                Preenchimento.Aleatorio(vet, 100000);
-            }
-            else if (comboBox1.SelectedIndex == 4)
-            {
-                vet = new int[500000];
-                Preenchimento.Aleatorio(vet, 500000);
-            }
-            var stopwatch = new Stopwatch();
-            stopwatch.Start(); // inicia cronômetro
-            iniciaAnimacao(() => OrdenacaoEstatistica.shellSort(vet));
-            stopwatch.Stop(); // interrompe cronômetro
-            long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
-            MessageBox.Show(this,
-                  "Tamanho do vetor: " + tamanho +
-                  "\nOrdenação inicial: " + preenchimento +
-                  "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
-                  "\nNº de comparações: " + OrdenacaoEstatistica.cont_c +
-                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_t,
-                  "Estatísticas do Método ShellSort",
-                  MessageBoxButtons.OK,
-                  MessageBoxIcon.Information);
-            OrdenacaoEstatistica.cont_c = 0;
-            OrdenacaoEstatistica.cont_t = 0;
-        }
-        #endregion
-
-        #region HeapSort
-        private void heapsortToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            string preenchimento = "";
-            int tamanho = Convert.ToInt32(comboBox1.SelectedItem);
-            vet = new int[tamanho];
-            if (comboBox1.SelectedIndex == 0)
-            {
-                vet = new int[1000];
-                Preenchimento.Aleatorio(vet, 1000);
-            }
-            else if (comboBox1.SelectedIndex == 1)
-            {
-                vet = new int[10000];
-                Preenchimento.Aleatorio(vet, 10000);
-            }
-            else if (comboBox1.SelectedIndex == 2)
-            {
-                vet = new int[50000];
-                Preenchimento.Aleatorio(vet, 50000);
-            }
-            else if (comboBox1.SelectedIndex == 3)
-            {
-                vet = new int[100000];
-                Preenchimento.Aleatorio(vet, 100000);
-            }
-            else if (comboBox1.SelectedIndex == 4)
-            {
-                vet = new int[500000];
-                Preenchimento.Aleatorio(vet, 500000);
-            }
-            var stopwatch = new Stopwatch();
-            stopwatch.Start(); // inicia cronômetro
-            iniciaAnimacao(() => OrdenacaoEstatistica.heapSort(vet));
+            OrdenacaoEstatistica.selecao(vet);
             stopwatch.Stop(); // interrompe cronômetro
             long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
             MessageBox.Show(this,
@@ -380,49 +230,35 @@ namespace Pratica5 {
                   "Estatísticas do Método HeapSort",
                   MessageBoxButtons.OK,
                   MessageBoxIcon.Information);
-            OrdenacaoEstatistica.cont_c = 0;
-            OrdenacaoEstatistica.cont_t = 0;
         }
         #endregion
 
-        #region QuickSort
-        private void quicksortToolStripMenuItem1_Click(object sender, EventArgs e)
+        #region Inserção
+        private void inserçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OrdenacaoEstatistica.cont_c = 0;
+            OrdenacaoEstatistica.cont_t = 0;
             string preenchimento = "";
             int tamanho = Convert.ToInt32(comboBox1.SelectedItem);
             vet = new int[tamanho];
-            if (comboBox1.SelectedIndex == 0)
+            if (radioButton1.Checked)
             {
-                vet = new int[1000];
-                Preenchimento.Aleatorio(vet, 1000);
+                Preenchimento.Crescente(vet, tamanho);
+                preenchimento = "Crescente";
             }
-            else if (comboBox1.SelectedIndex == 1)
+            else if (radioButton2.Checked)
             {
-                vet = new int[10000];
-                Preenchimento.Aleatorio(vet, 10000);
+                Preenchimento.Decrescente(vet, tamanho);
+                preenchimento = "Decrescente";
             }
-            else if (comboBox1.SelectedIndex == 2)
+            else
             {
-                vet = new int[50000];
-                Preenchimento.Aleatorio(vet, 50000);
-            }
-            else if (comboBox1.SelectedIndex == 3)
-            {
-                vet = new int[100000];
-                Preenchimento.Aleatorio(vet, 100000);
-            }
-            else if (comboBox1.SelectedIndex == 4)
-            {
-                vet = new int[500000];
-                Preenchimento.Aleatorio(vet, 500000);
+                Preenchimento.Aleatorio(vet, tamanho);
+                preenchimento = "Aleatório";
             }
             var stopwatch = new Stopwatch();
             stopwatch.Start(); // inicia cronômetro
-
-            esq = 0;
-            dir = vet.Length - 1;
-            iniciaAnimacao(() => OrdenacaoEstatistica.quickSort(vet, esq, dir));
-
+            OrdenacaoEstatistica.insercao(vet);
             stopwatch.Stop(); // interrompe cronômetro
             long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
             MessageBox.Show(this,
@@ -431,11 +267,134 @@ namespace Pratica5 {
                   "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
                   "\nNº de comparações: " + OrdenacaoEstatistica.cont_c +
                   "\nNº de trocas: " + OrdenacaoEstatistica.cont_t,
-                  "Estatísticas do Método QuickSort",
+                  "Estatísticas do Método HeapSort",
                   MessageBoxButtons.OK,
                   MessageBoxIcon.Information);
+        }
+        #endregion
+
+        #region ShellSort
+
+        private void shellsortToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
             OrdenacaoEstatistica.cont_c = 0;
             OrdenacaoEstatistica.cont_t = 0;
+            string preenchimento = "";
+            int tamanho = Convert.ToInt32(comboBox1.SelectedItem);
+            vet = new int[tamanho];
+            if (radioButton1.Checked)
+            {
+                Preenchimento.Crescente(vet, tamanho);
+                preenchimento = "Crescente";
+            }
+            else if (radioButton2.Checked)
+            {
+                Preenchimento.Decrescente(vet, tamanho);
+                preenchimento = "Decrescente";
+            }
+            else
+            {
+                Preenchimento.Aleatorio(vet, tamanho);
+                preenchimento = "Aleatório";
+            }
+            var stopwatch = new Stopwatch();
+            stopwatch.Start(); // inicia cronômetro
+            OrdenacaoEstatistica.shellSort(vet);
+            stopwatch.Stop(); // interrompe cronômetro
+            long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
+            MessageBox.Show(this,
+                  "Tamanho do vetor: " + tamanho +
+                  "\nOrdenação inicial: " + preenchimento +
+                  "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
+                  "\nNº de comparações: " + OrdenacaoEstatistica.cont_c +
+                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_t,
+                  "Estatísticas do Método HeapSort",
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Information);
+        }
+        #endregion
+
+        #region HeapSort
+        private void heapsortToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OrdenacaoEstatistica.cont_c = 0;
+            OrdenacaoEstatistica.cont_t = 0;
+            string preenchimento = "";
+            int tamanho = Convert.ToInt32(comboBox1.SelectedItem);
+            vet = new int[tamanho];
+            if (radioButton1.Checked)
+            {
+                Preenchimento.Crescente(vet, tamanho);
+                preenchimento = "Crescente";
+            }
+            else if (radioButton2.Checked)
+            {
+                Preenchimento.Decrescente(vet, tamanho);
+                preenchimento = "Decrescente";
+            }
+            else
+            {
+                Preenchimento.Aleatorio(vet, tamanho);
+                preenchimento = "Aleatório";
+            }
+            var stopwatch = new Stopwatch();
+            stopwatch.Start(); // inicia cronômetro
+            OrdenacaoEstatistica.heapSort(vet);
+            stopwatch.Stop(); // interrompe cronômetro
+            long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
+            MessageBox.Show(this,
+                  "Tamanho do vetor: " + tamanho +
+                  "\nOrdenação inicial: " + preenchimento +
+                  "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
+                  "\nNº de comparações: " + OrdenacaoEstatistica.cont_c +
+                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_t,
+                  "Estatísticas do Método HeapSort",
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Information);
+            
+        }
+        #endregion
+
+        #region QuickSort
+        private void quicksortToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OrdenacaoEstatistica.cont_c = 0;
+            OrdenacaoEstatistica.cont_t = 0;
+            string preenchimento = "";
+            int tamanho = Convert.ToInt32(comboBox1.SelectedItem);
+            vet = new int[tamanho];
+            if (radioButton1.Checked)
+            {
+                Preenchimento.Crescente(vet, tamanho);
+                preenchimento = "Crescente";
+            }
+            else if (radioButton2.Checked)
+            {
+                Preenchimento.Decrescente(vet, tamanho);
+                preenchimento = "Decrescente";
+            }
+            else
+            {
+                Preenchimento.Aleatorio(vet, tamanho);
+                preenchimento = "Aleatório";
+            }
+            var stopwatch = new Stopwatch();
+            stopwatch.Start(); // inicia cronômetro
+            esq = 0;
+            dir = vet.Length - 1;
+            OrdenacaoEstatistica.quickSort(vet, esq, dir);            
+            stopwatch.Stop(); // interrompe cronômetro
+            long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
+            MessageBox.Show(this,
+                  "Tamanho do vetor: " + tamanho +
+                  "\nOrdenação inicial: " + preenchimento +
+                  "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
+                  "\nNº de comparações: " + OrdenacaoEstatistica.cont_c +
+                  "\nNº de trocas: " + OrdenacaoEstatistica.cont_t,
+                  "Estatísticas do Método HeapSort",
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Information);   
+           
 
         }
         #endregion
@@ -443,41 +402,32 @@ namespace Pratica5 {
         #region MergeSort
         private void mergesortToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OrdenacaoEstatistica.cont_c = 0;
+            OrdenacaoEstatistica.cont_t = 0;
             string preenchimento = "";
             int tamanho = Convert.ToInt32(comboBox1.SelectedItem);
             vet = new int[tamanho];
-            if (comboBox1.SelectedIndex == 0)
+            if (radioButton1.Checked)
             {
-                vet = new int[1000];
-                Preenchimento.Aleatorio(vet, 1000);
+                Preenchimento.Crescente(vet, tamanho);
+                preenchimento = "Crescente";
             }
-            else if (comboBox1.SelectedIndex == 1)
+            else if (radioButton2.Checked)
             {
-                vet = new int[10000];
-                Preenchimento.Aleatorio(vet, 10000);
+                Preenchimento.Decrescente(vet, tamanho);
+                preenchimento = "Decrescente";
             }
-            else if (comboBox1.SelectedIndex == 2)
+            else
             {
-                vet = new int[50000];
-                Preenchimento.Aleatorio(vet, 50000);
-            }
-            else if (comboBox1.SelectedIndex == 3)
-            {
-                vet = new int[100000];
-                Preenchimento.Aleatorio(vet, 100000);
-            }
-            else if (comboBox1.SelectedIndex == 4)
-            {
-                vet = new int[500000];
-                Preenchimento.Aleatorio(vet, 500000);
+                Preenchimento.Aleatorio(vet, tamanho);
+                preenchimento = "Aleatório";
             }
             var stopwatch = new Stopwatch();
             stopwatch.Start(); // inicia cronômetro
-
             int i, j;
             i = 0;
             j = vet.Length - 1;
-            iniciaAnimacao(() => OrdenacaoEstatistica.mergeSort(vet, i, j));
+            OrdenacaoEstatistica.mergeSort(vet, i, j);
 
             stopwatch.Stop(); // interrompe cronômetro
             long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
@@ -490,20 +440,11 @@ namespace Pratica5 {
                   "Estatísticas do Método MergeSort",
                   MessageBoxButtons.OK,
                   MessageBoxIcon.Information);
-            OrdenacaoEstatistica.cont_c = 0;
-            OrdenacaoEstatistica.cont_t = 0;
+            
 
         }
         #endregion
-        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormOrdenacao_Load(object sender, EventArgs e)
-        {
-
-        }
+       
     }
        
 

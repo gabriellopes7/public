@@ -17,3 +17,13 @@ C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Pratica 5\PraticaOrdena
 C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\obj\Debug\Pratica5.csproj.GenerateResource.cache
 C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\obj\Debug\PraticaOrdenacao.exe
 C:\Users\Gabriel Ladeira\Documents\public\exercicios\aed\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\obj\Debug\PraticaOrdenacao.pdb
+D:\Documentos\public\exercicios\aed\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\bin\Debug\PraticaOrdenacao.exe.config
+D:\Documentos\public\exercicios\aed\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\bin\Debug\PraticaOrdenacao.exe
+D:\Documentos\public\exercicios\aed\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\bin\Debug\PraticaOrdenacao.pdb
+D:\Documentos\public\exercicios\aed\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\obj\Debug\Pratica5.csprojAssemblyReference.cache
+D:\Documentos\public\exercicios\aed\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\obj\Debug\Pratica5.FormOrdenacao.resources
+D:\Documentos\public\exercicios\aed\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\obj\Debug\PraticaOrdenacao.Properties.Resources.resources
+D:\Documentos\public\exercicios\aed\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\obj\Debug\Pratica5.csproj.GenerateResource.cache
+D:\Documentos\public\exercicios\aed\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\obj\Debug\Pratica5.csproj.CoreCompileInputs.cache
+D:\Documentos\public\exercicios\aed\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\obj\Debug\PraticaOrdenacao.exe
+D:\Documentos\public\exercicios\aed\Pratica 5\PraticaOrdenacao_2019_2_CS\PraticaOrdenacao\obj\Debug\PraticaOrdenacao.pdb
