@@ -1,7 +1,0 @@
-H:\Visual Studio 2017\ConsoleApp7\ConsoleApp7\obj\Debug\ConsoleApp7.csprojAssemblyReference.cache
-H:\Visual Studio 2017\ConsoleApp7\ConsoleApp7\obj\Debug\ConsoleApp7.csproj.CoreCompileInputs.cache
-H:\Visual Studio 2017\ConsoleApp7\ConsoleApp7\bin\Debug\ConsoleApp7.exe.config
-H:\Visual Studio 2017\ConsoleApp7\ConsoleApp7\bin\Debug\ConsoleApp7.exe
-H:\Visual Studio 2017\ConsoleApp7\ConsoleApp7\bin\Debug\ConsoleApp7.pdb
-H:\Visual Studio 2017\ConsoleApp7\ConsoleApp7\obj\Debug\ConsoleApp7.exe
-H:\Visual Studio 2017\ConsoleApp7\ConsoleApp7\obj\Debug\ConsoleApp7.pdb

@@ -1,0 +1,26 @@
+C:\Users\Marselli\Documents\Estudos\Faculdade\3 SEMESTRE\AED\Pratica6\Pratica6\bin\Debug\Pratica6.exe.config
+C:\Users\Marselli\Documents\Estudos\Faculdade\3 SEMESTRE\AED\Pratica6\Pratica6\bin\Debug\Pratica6.exe
+C:\Users\Marselli\Documents\Estudos\Faculdade\3 SEMESTRE\AED\Pratica6\Pratica6\bin\Debug\Pratica6.pdb
+C:\Users\Marselli\Documents\Estudos\Faculdade\3 SEMESTRE\AED\Pratica6\Pratica6\obj\Debug\Pratica6.csprojResolveAssemblyReference.cache
+C:\Users\Marselli\Documents\Estudos\Faculdade\3 SEMESTRE\AED\Pratica6\Pratica6\obj\Debug\Pratica6.exe
+C:\Users\Marselli\Documents\Estudos\Faculdade\3 SEMESTRE\AED\Pratica6\Pratica6\obj\Debug\Pratica6.pdb
+C:\Users\Marselli\Documents\Estudos\Faculdade\3 SEMESTRE\AED\Mostrar\Pratica6-ok\Pratica6\bin\Debug\Pratica6.exe.config
+C:\Users\Marselli\Documents\Estudos\Faculdade\3 SEMESTRE\AED\Mostrar\Pratica6-ok\Pratica6\obj\Debug\Pratica6.exe
+C:\Users\Marselli\Documents\Estudos\Faculdade\3 SEMESTRE\AED\Mostrar\Pratica6-ok\Pratica6\obj\Debug\Pratica6.pdb
+C:\Users\Marselli\Documents\Estudos\Faculdade\3 SEMESTRE\AED\Mostrar\Pratica6-ok\Pratica6\bin\Debug\Pratica6.exe
+C:\Users\Marselli\Documents\Estudos\Faculdade\3 SEMESTRE\AED\Mostrar\Pratica6-ok\Pratica6\bin\Debug\Pratica6.pdb
+C:\Users\Marselli\Documents\Estudos\Faculdade\3 SEMESTRE\AED\Mostrar\Pratica6-ok\Pratica6\obj\Debug\Pratica6.csprojResolveAssemblyReference.cache
+H:\AED\Mostrar\Pratica6-ok\Pratica6\bin\Debug\Pratica6.exe.config
+H:\AED\Mostrar\Pratica6-ok\Pratica6\bin\Debug\Pratica6.exe
+H:\AED\Mostrar\Pratica6-ok\Pratica6\bin\Debug\Pratica6.pdb
+H:\AED\Mostrar\Pratica6-ok\Pratica6\obj\Debug\Pratica6.csprojAssemblyReference.cache
+H:\AED\Mostrar\Pratica6-ok\Pratica6\obj\Debug\Pratica6.csproj.CoreCompileInputs.cache
+H:\AED\Mostrar\Pratica6-ok\Pratica6\obj\Debug\Pratica6.exe
+H:\AED\Mostrar\Pratica6-ok\Pratica6\obj\Debug\Pratica6.pdb
+D:\Documentos\public\exercicios\aed\Pratica 6 Arvore Binaria\Pratica6\Pratica6\bin\Debug\Pratica6.exe.config
+D:\Documentos\public\exercicios\aed\Pratica 6 Arvore Binaria\Pratica6\Pratica6\bin\Debug\Pratica6.exe
+D:\Documentos\public\exercicios\aed\Pratica 6 Arvore Binaria\Pratica6\Pratica6\bin\Debug\Pratica6.pdb
+D:\Documentos\public\exercicios\aed\Pratica 6 Arvore Binaria\Pratica6\Pratica6\obj\Debug\Pratica6.csprojAssemblyReference.cache
+D:\Documentos\public\exercicios\aed\Pratica 6 Arvore Binaria\Pratica6\Pratica6\obj\Debug\Pratica6.csproj.CoreCompileInputs.cache
+D:\Documentos\public\exercicios\aed\Pratica 6 Arvore Binaria\Pratica6\Pratica6\obj\Debug\Pratica6.exe
+D:\Documentos\public\exercicios\aed\Pratica 6 Arvore Binaria\Pratica6\Pratica6\obj\Debug\Pratica6.pdb
