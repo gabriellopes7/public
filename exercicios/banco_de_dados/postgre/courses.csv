@@ -1,0 +1,21 @@
+id;course_name;course_area;course_duration;course_cost_brl;created_at;;;;
+1;Creative Writting;marketing;28800;200.00;01/01/2016;;38,69717514;;
+2;Inbound Marketing;marketing;28800;200.00;01/01/2016;;42,956;;
+3;Blogs and Social: Basic;marketing;21600;100.00;01/07/2016;;21,83181818;;
+4;Drawing and painting: Basic;arts;14400;100.00;01/07/2016;;23,17892157;;
+5;Portrait Photography;arts;21600;130.00;01/07/2016;;31,08103448;;
+6;Music theory 101;arts;43200;250.00;01/07/2016;;45,8718232;;227400
+7;Blogs and Social: Advanced;marketing;21600;150.00;01/01/2017;;30,92932692;;
+8;Video for web;marketing;36000;250.00;01/01/2017;;65,84457831;;
+9;Drawing and painting: Intermediate;arts;14400;125.00;01/01/2017;;28,13837209;;
+11;Watercolours;arts;28800;300.00;01/01/2017;;52,26888889;;
+12;Oil painting;arts;28800;300.00;01/01/2017;;87,17663551;;
+13;Drawing and painting: Advanced;arts;14400;150.00;01/08/2017;;29,13043478;;
+14;Number Theory;stem;21600;150.00;01/01/2018;;32,68108108;;
+15;Algebra I;stem;43200;200.00;01/01/2018;;45,7382716;;
+16;Geometry I;stem;43200;200.00;01/01/2018;;45,68;;
+17;Mathematical Fundamentals;stem;21600;150.00;01/01/2019;;26,89548872;;
+18;Algebra II;stem;50400;200.00;01/01/2019;;34,72972973;;
+19;Statistics I;stem;43200;200.00;01/07/2019;;47,35930736;;
+20;Geometry II;stem;57600;200.00;01/07/2019;;44,65333333;;
+10;Landscape Photography;arts;21600;130.00;01/07/2017;;25,51196581;;
