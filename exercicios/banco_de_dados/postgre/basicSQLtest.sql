@@ -84,8 +84,7 @@ BEGIN
    
 END;
 $$;
-select (fn_receita_bruta() - fn_custo()) as receita_liquida
-
+select (fn_receita_bruta() - fn_custo()) as receita_liquida;
 
 --6. Qual curso atingiu o maior número de matrículas nos primeiros 90 dias de lançamento?
 select c.course_name
