@@ -23,7 +23,7 @@ select cast(((select cast(count(id)*100 as decimal(10,2))
 					and email is not null
 					and gender is not null)/(select cast(count(id) as decimal(10,2))
 											from users)) as decimal(10,2)) as "porcentagem preenchida %";
-												
+											
 					
 --4. Qual o percentual de usuários na base que nunca se matriculou em nenhum curso?					
 select cast((select cast(count(id)*100 as decimal(10,2))
