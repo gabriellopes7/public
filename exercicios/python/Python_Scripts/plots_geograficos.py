@@ -4,6 +4,7 @@
 import plotly.graph_objs as go 
 from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 import chart_studio.plotly as py 
+#pre instrução para trabalhar no modo offline
 init_notebook_mode(connected=True)
 
 import pandas as pd 
