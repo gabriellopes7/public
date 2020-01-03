@@ -83,3 +83,4 @@
 #geralmente, métodos não lineares, mais flexiveis resultam em viés menor
 #mas assim como métodos mais flexíveis também aumentam a variância
 #importante encontrar o ponto ótimo entre as variáveis bias, var e MSE -> bias-variance trade-off
+
