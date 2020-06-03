@@ -11,7 +11,7 @@ import numpy as np
 import matplotlib.pyplot as plt 
 import seaborn as sns 
 
-ecData = pd.read_csv(r'C:\Users\Gabriel Ladeira\Documents\python_data_science\Python-Data-Science-and-Machine-Learning-Bootcamp\5. Machine Learning\Regressões Lineares\Ecommerce Customers')
+ecData = pd.read_csv(r'D:\Documentos\public\exercicios\python\Python_Scripts\machine_learning\rock_forecasts\Ecommerce_Customers.csv')
 print(ecData.head())
 print(ecData.info())
 print(ecData.columns)

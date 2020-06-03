@@ -11,12 +11,12 @@ import numpy as np
 import matplotlib.pyplot as plt 
 import seaborn as sns 
 
-USAHousing = pd.read_csv(r'C:\Users\Gabriel Ladeira\Documents\python_data_science\Python-Data-Science-and-Machine-Learning-Bootcamp\5. Machine Learning\Regressões Lineares\USA_Housing.csv')
+USAHousing = pd.read_csv(r'D:\Documentos\public\exercicios\python\Python_Scripts\machine_learning\rock_forecasts\USA_Housing.csv')
 print(USAHousing.info())
 print(USAHousing.columns)
 
 #fazendo um pairplot para visualizar a disponibilização dos dados
-#sns.pairplot(USAHousing)
+sns.pairplot(USAHousing)
 #plt.show() #as vezes é mais interessante usar o Anaconda
 #é possível perceber a relação linear entre os dados e o preço
 sns.heatmap(USAHousing.corr(),cmap='rainbow')
